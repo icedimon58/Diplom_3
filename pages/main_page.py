@@ -1,12 +1,11 @@
 import allure
 
 from pages.base_page import BasePage
-from pages.general_methods import GeneralMethodsPage
 from locators.main_page_locators import ITEM_LOCATOR, ITEM_TEXT, CLOSE_BUTTON_LOCATOR_MAIN_PAGE, BASCET_LOCATOR, \
     INGRIDIENT_LOCATOR, TAKE_ORDER_LOCATOR, CLOSE_BUTTON_LOCATOR_OVER
 
 
-class MainPage(GeneralMethodsPage, BasePage):
+class MainPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -15,11 +14,10 @@ class MainPage(GeneralMethodsPage, BasePage):
 
     @allure.step('Кликаем по ингредиенту')
     def click_on_get_ingridient(self):
-        self.wait_overlay_disipearing()
         self._click_on_element(ITEM_LOCATOR)
 
     @allure.step('Получаем текст со страницы ингредиента')
-    def get_ingridient_window_text(self):
+    def get_ingredient_window_text(self):
         return self._get_element_text(ITEM_TEXT)
 
     @allure.step('Перетаскиваем ингредиент')

@@ -2,18 +2,12 @@ import allure
 
 from locators.redirect_page_locators import KABINET_LOCATOR
 from pages.base_page import BasePage
-from pages.general_methods import GeneralMethodsPage
-from pages.main_page import MainPage
-from pages.redirect_page import RedirectPage
 from locators.login_page_locators import MAIL_FIELD, PASSWORD_FIELD, PASSWORD_SHOW_BUTTON, FILLED_LOCATOR, LOGIN_BUTTON
 
 
-class LoginPage(RedirectPage, MainPage, GeneralMethodsPage, BasePage):
-    @allure.step('Переход на страницу авторизации')
-    def redir_to_login_page(self):
-        self.redirect_to_login_page()
+class LoginPage(BasePage):
 
-    @allure.step('Ждем когда появиться локатор Личной страницы')
+    @allure.step('Ждем когда появится локатор Личной страницы')
     def check_redirection(self):
         return self._wait_elem_visible(KABINET_LOCATOR).is_displayed()
 

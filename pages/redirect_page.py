@@ -3,11 +3,9 @@ import allure
 from locators.redirect_page_locators import KABINET_LOCATOR, ORDERS_LINE, CONSTRUCT_LINE_BTN, ORDERS_LINE_HEADER, \
     OVERLAY_LOAD_LOCATOR_REDIR_PAGE, ORDER_LINE_TEXT_REDIR_PAGE, CONSTRUCT_LINE_TEXT_REDIR_PAGE
 from pages.base_page import BasePage
-from pages.general_methods import GeneralMethodsPage
-from pages.main_page import MainPage
 
 
-class RedirectPage(MainPage, GeneralMethodsPage, BasePage):
+class RedirectPage(BasePage):
 
     @allure.step('Переход на страницу авторизации')
     def redirect_to_login_page(self):
@@ -23,10 +21,6 @@ class RedirectPage(MainPage, GeneralMethodsPage, BasePage):
     def redirect_to_condtructor(self):
         self._wait_elem_invisible(OVERLAY_LOAD_LOCATOR_REDIR_PAGE)
         self._click_on_element(CONSTRUCT_LINE_BTN)
-
-    @allure.step('Переход по элементу')
-    def redirect_to(self, locator):
-        self._click_on_element(locator)
 
     @allure.step('Переход на старницу заказов')
     def click_order_line(self):

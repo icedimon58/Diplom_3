@@ -3,14 +3,9 @@ import allure
 from locators.order_page_locator import ORDER_NUMBER_LOCATOR, ORDER_LOCATOR, ORDER_TEXT_LOCATOR, \
     USERS_ORDER_IN_MAIN_LIST, ORDERS_DONE_FOR_ALL_TIME, ORDERS_DONE_TODAY, ORDERS_IN_WORK, ORDER_READY_LOCATOR
 from pages.base_page import BasePage
-from pages.cabinet_page import CabinetPage
-from pages.general_methods import GeneralMethodsPage
-from pages.login_page import LoginPage
-from pages.main_page import MainPage
-from pages.redirect_page import RedirectPage
 
 
-class OrderPage(CabinetPage, LoginPage, RedirectPage, MainPage, GeneralMethodsPage, BasePage):
+class OrderPage(BasePage):
     @allure.step('Получаем количество заказов за все время')
     def get_orders_for_all_time(self):
         return self._get_element_text(ORDERS_DONE_FOR_ALL_TIME)
